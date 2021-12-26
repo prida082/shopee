@@ -20,7 +20,11 @@
             }
         </style>
     </head>
-    <body>
+    <body class="antialiased">
         Shopee
+        <br><div class="center">
+        <a href = "/login">Login</a><br>
+        <a href = "/register">Register</a>
+        </div>
     </body>
 </html>
