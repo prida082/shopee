@@ -13,9 +13,10 @@ use Illuminate\Support\Facades\Route;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-Route::get('/product',function(){
-    return 'product a';
-});
+Route::get('/product',[\App\Http\Controllers\ProductController::class,'index']);
+Route::post('/product/store',[\App\Http\Controllers\ProductController::class,'store']);
+Route::get('/product/show/{id}',[\App\Http\Controllers\ProductController::class,'show']);
+Route::get('/product/search{name}',[\App\Http\Controllers\ProductController::class,'search']);
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();

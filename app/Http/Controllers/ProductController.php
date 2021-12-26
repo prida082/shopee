@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Product;
 
 class ProductController extends Controller
 {
@@ -14,6 +15,7 @@ class ProductController extends Controller
     public function index()
     {
         //
+        return Product::all();
     }
 
     /**
@@ -25,6 +27,16 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         //
+        $request->validate([
+            'name'=>'required',
+            'description'=>'required',
+            'price'=>'required',
+            'image'=>'required',
+        ]);
+        $product = Product::create($request->all());
+        //return $request->all();
+        //$product = product::create(['name'=>'hello','description'=>'newcom','price'=>100,'image'=>'']);
+        return $product;
     }
 
     /**
@@ -36,6 +48,8 @@ class ProductController extends Controller
     public function show($id)
     {
         //
+        $product=Product::find($id);
+        return $product;
     }
 
     /**
@@ -59,5 +73,12 @@ class ProductController extends Controller
     public function destroy($id)
     {
         //
+    }
+    public function search($name)
+    {
+        //$product=Product::where([
+        //    ['name','like','%iphone%']
+        //])->get();
+        return $name;
     }
 }
