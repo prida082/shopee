@@ -76,9 +76,9 @@ class ProductController extends Controller
     }
     public function search($name)
     {
-        //$product=Product::where([
-        //    ['name','like','%iphone%']
-        //])->get();
-        return $name;
+        $products=Product::where([
+            ['name','like','%'.$name.'%']
+        ])->get();
+        return $products;
     }
 }
